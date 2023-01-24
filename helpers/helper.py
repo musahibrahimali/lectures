@@ -9,6 +9,8 @@ from io import StringIO, BytesIO
 import base64
 from wordcloud import WordCloud, STOPWORDS
 import nltk
+from string import punctuation
+from heapq import nlargest
 
 try:
     from nltk.corpus import stopwords
@@ -30,8 +32,6 @@ try:
 except ImportError:
     print(f"python -m spacy download en_core_web_sm")
     from spacy.lang.en.stop_words import STOP_WORDS
-from string import punctuation
-from heapq import nlargest
 
 column_names: [str] = [
     "ID",
