@@ -9,14 +9,27 @@ from io import StringIO, BytesIO
 import base64
 from wordcloud import WordCloud, STOPWORDS
 import nltk
-from nltk.corpus import stopwords
-from nltk.stem.porter import PorterStemmer
-from collections import Counter
-from nltk.corpus import wordnet
-from nltk.stem import WordNetLemmatizer
+
+try:
+    from nltk.corpus import stopwords
+    from nltk.stem.porter import PorterStemmer
+    from collections import Counter
+    from nltk.corpus import wordnet
+    from nltk.stem import WordNetLemmatizer
+except ImportError:
+    nltk.download("all")
+    from nltk.corpus import stopwords
+    from nltk.stem.porter import PorterStemmer
+    from collections import Counter
+    from nltk.corpus import wordnet
+    from nltk.stem import WordNetLemmatizer
 from textblob import TextBlob
 import spacy
-from spacy.lang.en.stop_words import STOP_WORDS
+try:
+    from spacy.lang.en.stop_words import STOP_WORDS
+except ImportError:
+    print(f"python -m spacy download en_core_web_sm")
+    from spacy.lang.en.stop_words import STOP_WORDS
 from string import punctuation
 from heapq import nlargest
 
